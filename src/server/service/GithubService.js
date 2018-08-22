@@ -1,9 +1,9 @@
 import Axios from 'axios'
 import * as gistApis from '../constants/gistApis'
-import { GIST_TOKEN } from '../../../key.config'
 
 class GithubService {
-  constructor() {
+  constructor(token) {
+    this.token = token
     this.GIST_JSON_EMPTY = {
       description: 'WakaTime Data Sync Gist',
       public: false,
@@ -25,7 +25,7 @@ class GithubService {
     Axios.request({
       method: 'POST',
       url: gistApis.gist,
-      headers: { Authorization: `token ${GIST_TOKEN}` },
+      headers: { Authorization: `token ${self.token}` },
       data: gistJson
     })
   }
@@ -42,7 +42,7 @@ class GithubService {
     Axios.request({
       method: 'PATCH',
       url: `${gistApis.gist}/${gistId}`,
-      headers: { Authorization: `token ${GIST_TOKEN}` },
+      headers: { Authorization: `token ${self.token}` },
       data: gistJson
     })
   }
