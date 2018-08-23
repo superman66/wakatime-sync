@@ -2,7 +2,7 @@ import moment from 'moment'
 const schedule = require('node-schedule')
 import GithubService from './service/GithubService'
 import WakatimeService from './service/WakatimeService'
-const config = require('../../config.json')
+const config = require('../config.json')
 
 const wakatimeInstance = new WakatimeService(config.wakatimeApiKey)
 const githubInstance = new GithubService(config.gistToken)
