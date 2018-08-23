@@ -16,8 +16,8 @@ const syncWakaTimeToGist = function(gistId) {
     .then(response => {
       return githubInstance.updateGist(gistId, date, response)
     })
-    .then(response => console.log('success'))
-    .catch(error => console.log(error))
+    .then(response => console.log(`${date}: summary data sync successed!`))
+    .catch(error => console.log(`${date}: oops.. sync erorr. reason: ${error.data}`))
 }
 
 // 每次重跑 job 手动执行一次同步
