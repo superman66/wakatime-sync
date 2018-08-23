@@ -20,6 +20,9 @@ const syncWakaTimeToGist = function(gistId) {
     .catch(error => console.log(error))
 }
 
+// 每次重跑 job 手动执行一次同步
+syncWakaTimeToGist(config.syncGistId)
+
 // 每天12点30分30秒执行该job
 const job = schedule.scheduleJob('30 * * * * *', function() {
   syncWakaTimeToGist(config.syncGistId)
