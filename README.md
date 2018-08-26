@@ -3,7 +3,7 @@
 > Waktime 是一款专门为程序员打造的时间统计工具。可以在各大编辑器、IDE 安装插件，然后统计你的 coding 时间。统计的维度包括：在具体项目的时长、所用的操作系统、所用的编辑器、所用的语言等。更多具体的可以前往 [Wakatime 官网](https://wakatime.com/).对于程序员而言，我强烈建议每个人都去使用 WakaTime。这样就能非常详细的记录你每天在 coding 的时间。
 
 这是我自己的 WakaTime 统计首页：
-![](./screenshot/summareis.jpg)
+![](./screenshot/summaries.jpg)
 
 WakaTime 非常完美，但是它有区分免费版和付费版。免费版只能保持两个礼拜的 Dashboard History，而付费版则要 $9 每个月。这样使用免费版的你，就无法查看历史更多的统计数据了。用订阅去支持这样的优秀的工具是件好事，可以帮助企业获得更好的收入，进而提升工具的质量和用户体验。
 
@@ -63,7 +63,7 @@ npm i pm2 -g
 如果是部署到服务器，则可以直接运行 `npm run pm2` 即可。
 
 这是我保存在 Gist 上的数据
-![](./screenshot/summaries.jpg)
+![](./screenshot/gist-data.jpg)
 
 ## 定时任务
 
