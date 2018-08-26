@@ -1,8 +1,15 @@
 # Wakatime Sync To Gist
 
-> Waktime 是一款专门为程序员打造的时间统计工具。可以在各大编辑器、IDE 安装插件，然后统计你的 coding 时间。统计的维度包括：在具体项目的时长、所用的操作系统、所用的编辑器、所用的语言等。更多具体的可以前往 [Wakatime 官网](https://wakatime.com/).当然了，WakaTime 也提供免费版和付费版的功能。免费版最多只能查看过去 14 天的统计数据。一旦时间过去了，就再也看不到统计数据了。这点无可厚非，毕竟 WakaTime 还是需要盈利和赚钱的。
+> Waktime 是一款专门为程序员打造的时间统计工具。可以在各大编辑器、IDE 安装插件，然后统计你的 coding 时间。统计的维度包括：在具体项目的时长、所用的操作系统、所用的编辑器、所用的语言等。更多具体的可以前往 [Wakatime 官网](https://wakatime.com/).对于程序员而言，我强烈建议每个人都去使用 WakaTime。这样就能非常详细的记录你每天在 coding 的时间。
 
-这个项目可以帮助你每天定时去请求 WakaTime 的统计数据，然后将数据同步到 Gist 上面。这样就可以永远的将你的统计数据保存到 Gist 上面，随时想看都可以。
+这是我自己的 WakaTime 统计首页：
+![](./screenshot/summareis.jpg)
+
+WakaTime 非常完美，但是它有区分免费版和付费版。免费版只能保持两个礼拜的 Dashboard History，而付费版则要 $9 每个月。这样使用免费版的你，就无法查看历史更多的统计数据了。用订阅去支持这样的优秀的工具是件好事，可以帮助企业获得更好的收入，进而提升工具的质量和用户体验。
+
+但是对于可能不太需要去看历史统计数据，但是可能偶尔需要看一看的人（比如一个季度或者一年看一次等），每个月花 $9 的成本确实不低。因此就产生了 **wakatiem-sync** 这个项目。
+
+`wakatime-sync` 可以帮助你每天定时去请求 WakaTime 的统计数据，然后将数据同步到 Gist 上面。这样就可以永远的将你的统计数据保存到 Gist 上面，随时想看都可以。
 目前只同步该接口的数据 `https://wakatime.com/api/v1/users/current/summaries`。因为通过该接口，基本上就能获取你所需要的各类信息。
 
 通过 [Wakatime Dashboard](https://github.com/superman66/wakatime-dashboard)这个项目，你就可以在上面保存查看 Gist 上面的统计数据，突破 WakaTime 免费版只能查看过去 14 天的数据。
@@ -32,7 +39,7 @@ npm i pm2 -g
 
 在 `src` 目录下创建 `config.json` 配置文件，将第一步创建的 Gist ID 填入。同时还需要:
 
-- wakatime apiKey - 用于请求 wakatime api 的key。[Waketime Setting](https://wakatime.com/settings/account)
+- wakatime apiKey - 用于请求 wakatime api 的 key。[Waketime Setting](https://wakatime.com/settings/account)
 - gistToken - 用于创建和修改 Gist 的 Token。[生成 Personal access tokens](https://github.com/settings/tokens)
 
 ```json
@@ -43,7 +50,8 @@ npm i pm2 -g
   "syncGistId": "xxxxxxxxx"
 }
 ```
->Waketime apikey 截图
+
+> Waketime apikey 截图
 
 ![how to get wakatime apikey](./screenshot/get-wakatime-apikey.jpg)
 安装完依赖后，你可以通过几个命令来运行该项目：
@@ -53,6 +61,9 @@ npm i pm2 -g
 - `npm run pm2` 构建项目并通过 pm2 启动管理项目
 
 如果是部署到服务器，则可以直接运行 `npm run pm2` 即可。
+
+这是我保存在 Gist 上的数据
+![](./screenshot/summaries.jpg)
 
 ## 定时任务
 
