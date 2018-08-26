@@ -3,6 +3,7 @@
 > Waktime 是一款专门为程序员打造的时间统计工具。可以在各大编辑器、IDE 安装插件，然后统计你的 coding 时间。统计的维度包括：在具体项目的时长、所用的操作系统、所用的编辑器、所用的语言等。更多具体的可以前往 [Wakatime 官网](https://wakatime.com/).当然了，WakaTime 也提供免费版和付费版的功能。免费版最多只能查看过去 14 天的统计数据。一旦时间过去了，就再也看不到统计数据了。这点无可厚非，毕竟 WakaTime 还是需要盈利和赚钱的。
 
 这个项目可以帮助你每天定时去请求 WakaTime 的统计数据，然后将数据同步到 Gist 上面。这样就可以永远的将你的统计数据保存到 Gist 上面，随时想看都可以。
+目前只同步该接口的数据 `https://wakatime.com/api/v1/users/current/summaries`。因为通过该接口，基本上就能获取你所需要的各类信息。
 
 通过 [Wakatime Dashboard](https://github.com/superman66/wakatime-dashboard)这个项目，你就可以在上面保存查看 Gist 上面的统计数据，突破 WakaTime 免费版只能查看过去 14 天的数据。
 ![](./screenshot/wakatime-dashboard.jpg)
