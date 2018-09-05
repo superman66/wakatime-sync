@@ -42,6 +42,9 @@ npm i pm2 -g
 - wakatime apiKey - 用于请求 wakatime api 的 key。[Waketime Setting](https://wakatime.com/settings/account)
 - gistToken - 用于创建和修改 Gist 的 Token。[生成 Personal access tokens](https://github.com/settings/tokens)
 
+需要注意的是，生成 token 需要勾选 gist 权限:
+![](./screenshot/generate-token.jpg)
+
 ```json
 // config.json
 {
