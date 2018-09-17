@@ -22,7 +22,7 @@ class GithubService {
     gistJson.files[`summaries_${date}.json`] = {
       content: JSON.stringify(content)
     }
-    Axios.request({
+    return Axios.request({
       method: 'POST',
       url: gistApis.gist,
       headers: { Authorization: `token ${self.token}` },
@@ -39,7 +39,7 @@ class GithubService {
         }
       }
     }
-    Axios.request({
+    return Axios.request({
       method: 'PATCH',
       url: `${gistApis.gist}/${gistId}`,
       headers: { Authorization: `token ${self.token}` },
