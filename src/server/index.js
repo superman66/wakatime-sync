@@ -8,9 +8,6 @@ const wakatimeInstance = new WakatimeService(config.wakatimeApiKey)
 const githubInstance = new GithubService(config.gistToken)
 
 const syncWakaTimeToGist = function(gistId) {
-  const date = moment()
-    .subtract(1, 'days')
-    .format('YYYY-MM-DD')
   wakatimeInstance
     .fetchSummaries(date)
     .then(response => {
@@ -24,10 +21,11 @@ const syncWakaTimeToGist = function(gistId) {
       }
     })
 }
+
 const syncWakaTimeToGistwithDate = function(gistId, date) {
   console.log(`Start to Sync Date: ${date}`)
-  const wakaInstance = new WakatimeService(config.wakatimeApiKey)
-  wakaInstane
+
+  new WakatimeService(config.wakatimeApiKey)
     .fetchSummaries(date)
     .then(response => {
       return new GithubService(config.gistToken).updateGist(gistId, date, response)
@@ -44,13 +42,20 @@ const syncWakaTimeToGistwithDate = function(gistId, date) {
 }
 
 // 每次重跑 job 手动执行一次同步
-syncWakaTimeToGist(config.syncGistId)
+syncWakaTimeToGistwithDate(
+  config.syncGistId,
+  moment()
+    .subtract(1, 'days')
+    .format('YYYY-MM-DD')
+)
 
 // 每天1点30分30秒执行该job
 const job = schedule.scheduleJob('0 30 18 * * *', function() {
-  syncWakaTimeToGist(config.syncGistId)
+  const date = moment()
+    .subtract(1, 'days')
+    .format('YYYY-MM-DD')
+  syncWakaTimeToGistwithDate(config.syncGistId, date)
 })
-
 
 const sync7Days = function() {
   var weekOfDate = []
@@ -63,9 +68,7 @@ const sync7Days = function() {
   }
   const waitFor = delay => new Promise(resolve => setTimeout(resolve, delay))
   for (var idx in weekOfDate) {
-    // use settimeout function to avoid api call error,
-    // Github/wakatime api has duration for each call
-    (function(idx) {
+    ;(function(idx) {
       setTimeout(function() {
         syncWakaTimeToGistwithDate(config.syncGistId, weekOfDate[idx])
       }, idx * 2000)
@@ -73,4 +76,4 @@ const sync7Days = function() {
   }
 }
 
-sync7Days()
+//sync7Days()
