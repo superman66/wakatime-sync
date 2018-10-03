@@ -25,10 +25,10 @@ const syncWakaTimeToGist = function(gistId) {
 const syncWakaTimeToGistwithDate = function(gistId, date) {
   console.log(`Start to Sync Date: ${date}`)
 
-  new WakatimeService(config.wakatimeApiKey)
+  wakatimeInstance
     .fetchSummaries(date)
     .then(response => {
-      return new GithubService(config.gistToken).updateGist(gistId, date, response)
+      githubInstance.updateGist(gistId, date, response)
     })
     .then(response => {
       console.log(`${date}: Data updated!`)
@@ -50,7 +50,7 @@ syncWakaTimeToGistwithDate(
 )
 
 // 每天1点30分30秒执行该job
-const job = schedule.scheduleJob('0 30 18 * * *', function() {
+const job = schedule.scheduleJob('0 30 1 * * *', function() {
   const date = moment()
     .subtract(1, 'days')
     .format('YYYY-MM-DD')
@@ -66,6 +66,7 @@ const sync7Days = function() {
         .format('YYYY-MM-DD')
     )
   }
+  weekOfDate = weekOfDate.reverse()
   const waitFor = delay => new Promise(resolve => setTimeout(resolve, delay))
   for (var idx in weekOfDate) {
     ;(function(idx) {
@@ -76,4 +77,4 @@ const sync7Days = function() {
   }
 }
 
-//sync7Days()
+// sync7Days()
