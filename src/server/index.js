@@ -24,11 +24,50 @@ const syncWakaTimeToGist = function(gistId) {
       }
     })
 }
+const syncWakaTimeToGistwithDate = function(gistId, date) {
+  console.log(`Start to Sync Date: ${date}`)
+  const wakaInstance = new WakatimeService(config.wakatimeApiKey)
+  wakaInstane
+    .fetchSummaries(date)
+    .then(response => {
+      return new GithubService(config.gistToken).updateGist(gistId, date, response)
+    })
+    .then(response => {
+      console.log(`${date}: Data updated!`)
+    })
+    .catch(error => {
+      if (error.response) {
+        const { data } = error.response
+        console.log(`${date}: Ops....ERROR. Reason：${JSON.stringify(data)}`)
+      }
+    })
+}
 
 // 每次重跑 job 手动执行一次同步
 syncWakaTimeToGist(config.syncGistId)
 
 // 每天1点30分30秒执行该job
-const job = schedule.scheduleJob('30 30 1 * * *', function() {
+const job = schedule.scheduleJob('0 30 18 * * *', function() {
   syncWakaTimeToGist(config.syncGistId)
 })
+
+const sync7Days = function() {
+  var weekOfDate = []
+  for (var i = 0; i < 7; i++) {
+    weekOfDate.push(
+      moment()
+        .subtract(i, 'days')
+        .format('YYYY-MM-DD')
+    )
+  }
+  const waitFor = delay => new Promise(resolve => setTimeout(resolve, delay))
+  for (var idx in weekOfDate) {
+    ;(function(idx) {
+      setTimeout(function() {
+        syncWakaTimeToGistwithDate(config.syncGistId, weekOfDate[idx])
+      }, idx * 2000)
+    })(idx)
+  }
+}
+
+sync7Days()
