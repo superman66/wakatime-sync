@@ -51,6 +51,7 @@ const job = schedule.scheduleJob('0 30 18 * * *', function() {
   syncWakaTimeToGist(config.syncGistId)
 })
 
+
 const sync7Days = function() {
   var weekOfDate = []
   for (var i = 0; i < 7; i++) {
@@ -62,7 +63,9 @@ const sync7Days = function() {
   }
   const waitFor = delay => new Promise(resolve => setTimeout(resolve, delay))
   for (var idx in weekOfDate) {
-    ;(function(idx) {
+    // use settimeout function to avoid api call error,
+    // Github/wakatime api has duration for each call
+    (function(idx) {
       setTimeout(function() {
         syncWakaTimeToGistwithDate(config.syncGistId, weekOfDate[idx])
       }, idx * 2000)
