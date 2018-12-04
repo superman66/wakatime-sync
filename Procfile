@@ -1,1 +1,2 @@
-web: node src/server/index.js
+web: npm install pm2 -g
+web: npm run start
