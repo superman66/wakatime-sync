@@ -4,6 +4,7 @@
   "description": "wakatime api data sync",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm install pm2",
     "start": "NODE_ENV=production pm2-runtime start pm2.json --env production",
     "dev": "NODE_ENV=development babel-node src/server/index.js",
     "build": "rm -rf build && babel src/server -d build/server "
