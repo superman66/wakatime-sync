@@ -3,15 +3,6 @@ const schedule = require('node-schedule')
 import GithubService from './service/GithubService'
 import WakatimeService from './service/WakatimeService'
 let config = require('../config.json')
-
-if (process.env.NODE_ENV === 'prodcution') {
-  // in production env, config read from heroku config vars.
-  config = {
-    wakatimeApiKey,
-    gistToken,
-    syncGistId
-  }
-}
 const wakatimeInstance = new WakatimeService(config.wakatimeApiKey)
 const githubInstance = new GithubService(config.gistToken)
 
