@@ -21,15 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var schedule = require('node-schedule');
 
 var config = require('../config.json');
-
-if (process.env.NODE_ENV === 'prodcution') {
-  // in production env, config read from heroku config vars.
-  config = {
-    wakatimeApiKey: wakatimeApiKey,
-    gistToken: gistToken,
-    syncGistId: syncGistId
-  };
-}
 var wakatimeInstance = new _WakatimeService2.default(config.wakatimeApiKey);
 var githubInstance = new _GithubService2.default(config.gistToken);
 
