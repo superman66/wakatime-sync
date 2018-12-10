@@ -68,6 +68,18 @@ npm i pm2 -g
 这是我保存在 Gist 上的数据
 ![](./screenshot/gist-data.jpg)
 
+
+## Docker 部署
+在配置好上面所说的数据后，可以直接在服务器使用 docker 进行部署（前提是已安装 docker 服务）。
+
+```
+// 构建镜像
+docker build -t wakatime-sync .
+
+// 镜像构建成功后，直接运行容器即可
+docker run -d wakatime-sync
+```
+
 ## 定时任务
 
 该项目使用的是 `node-schedule` 来执行定时任务的，我的设置是`每天1点30分30秒`执行（该时间是基于服务器的时间）。如果你要更改时间的话，只需要在 `src/server/index.js` 中更改即可：
