@@ -17,6 +17,12 @@ WakaTime 非常完美，但是它有区分免费版和付费版。免费版只�
 
 如果觉得对你有帮助，请点波 star 支持下作者，非常感谢~
 
+## ChANGELOG
+
+* 使用[Server酱](http://sc.ftqq.com/3.version)推送每天同步的状态到微信
+* 添加 Dockerfile，支持 docker 部署
+  
+
 ## 用法
 
 **第一步**
@@ -106,3 +112,20 @@ node-schedule 的规则如下：
 ```
 
 更多请看 [node-schedule 文档](https://github.com/node-schedule/node-schedule)。
+
+## 推送同步状态到微信
+不得不说 [Server酱](http://sc.ftqq.com/3.version) 是个好东西，简单快捷方便。感谢作者创造了一个这么好用到工具。
+Server酱到具体配置去官网看就可以了。没有任何难度，只要能看懂中文，就能懂得如何使用。
+把 Server酱提供的 `SCKEY` 放到前面说的 `config.json`，新建 `SCUKey` 字段：
+
+```json
+// config.json
+{
+  "wakatimeApiKey": "xxxxxxxxx",
+  "gistToken": "xxxxxxxxx",
+  "syncGistId": "xxxxxxxxx",
+  "SCUKey": "xxxxx"
+}
+```
+
+这样就可以在每次同步成功或者失败时，将消息推送到你在 Server酱 后台绑定的微信上。
