@@ -39,6 +39,6 @@ const syncWakaTimeToGist = function(gistId) {
 syncWakaTimeToGist(config.syncGistId)
 
 // 每天1点30分30秒执行该job
-// const job = schedule.scheduleJob('30 30 1 * * *', function() {
-//   syncWakaTimeToGist(config.syncGistId)
-// })
+const job = schedule.scheduleJob('30 30 1 * * *', function() {
+  syncWakaTimeToGist(config.syncGistId)
+})
