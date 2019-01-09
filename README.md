@@ -5,9 +5,9 @@
 这是我自己的 WakaTime 统计首页：
 ![](./screenshot/summaries.jpg)
 
-WakaTime 非常完美，但是它有区分免费版和付费版。免费版只能保持两个礼拜的 Dashboard History，而付费版则要 $9 每个月。这样使用免费版的你，就无法查看历史更多的统计数据了。用订阅去支持这样的优秀的工具是件好事，可以帮助企业获得更好的收入，进而提升工具的质量和用户体验。
+WakaTime 非常完美，但是它有区分免费版和付费版。免费版只能保持两个礼拜的 Dashboard History，而付费版则要 \$9 每个月。这样使用免费版的你，就无法查看历史更多的统计数据了。用订阅去支持这样的优秀的工具是件好事，可以帮助企业获得更好的收入，进而提升工具的质量和用户体验。
 
-但是对于可能不太需要去看历史统计数据，但是可能偶尔需要看一看的人（比如一个季度或者一年看一次等），每个月花 $9 的成本确实不低。因此就产生了 **wakatiem-sync** 这个项目。
+但是对于可能不太需要去看历史统计数据，但是可能偶尔需要看一看的人（比如一个季度或者一年看一次等），每个月花 \$9 的成本确实不低。因此就产生了 **wakatiem-sync** 这个项目。
 
 `wakatime-sync` 可以帮助你每天定时去请求 WakaTime 的统计数据，然后将数据同步到 Gist 上面。这样就可以永远的将你的统计数据保存到 Gist 上面，随时想看都可以。
 目前只同步该接口的数据 `https://wakatime.com/api/v1/users/current/summaries`。因为通过该接口，基本上就能获取你所需要的各类信息。
@@ -19,9 +19,8 @@ WakaTime 非常完美，但是它有区分免费版和付费版。免费版只�
 
 ## ChANGELOG
 
-* 使用[Server酱](http://sc.ftqq.com/3.version)推送每天同步的状态到微信
-* 添加 Dockerfile，支持 docker 部署
-  
+- 使用[Server 酱](http://sc.ftqq.com/3.version)推送每天同步的状态到微信
+- 添加 Dockerfile，支持 docker 部署
 
 ## 用法
 
@@ -43,7 +42,7 @@ npm i pm2 -g
 
 **第三步**
 
-在 `src` 目录下创建 `config.json` 配置文件，将第一步创建的 Gist ID 填入。同时还需要:
+在根目录下创建 `config.json` 配置文件，将第一步创建的 Gist ID 填入。同时还需要:
 
 - wakatime apiKey - 用于请求 wakatime api 的 key。[Waketime Setting](https://wakatime.com/settings/account)
 - gistToken - 用于创建和修改 Gist 的 Token。[生成 Personal access tokens](https://github.com/settings/tokens)
@@ -65,17 +64,16 @@ npm i pm2 -g
 ![how to get wakatime apikey](./screenshot/get-wakatime-apikey.jpg)
 安装完依赖后，你可以通过几个命令来运行该项目：
 
-- `npm run start` 本地启动该脚本
+- `npm start` 启动 pm2 进程
 - `npm run build` 构建项目
-- `npm run pm2` 构建项目并通过 pm2 启动管理项目
 
 如果是部署到服务器，则可以直接运行 `npm run pm2` 即可。
 
 这是我保存在 Gist 上的数据
 ![](./screenshot/gist-data.jpg)
 
-
 ## Docker 部署
+
 在配置好上面所说的数据后，可以直接在服务器使用 docker 进行部署（前提是已安装 docker 服务）。
 
 ```
@@ -114,9 +112,10 @@ node-schedule 的规则如下：
 更多请看 [node-schedule 文档](https://github.com/node-schedule/node-schedule)。
 
 ## 推送同步状态到微信
-不得不说 [Server酱](http://sc.ftqq.com/3.version) 是个好东西，简单快捷方便。感谢作者创造了一个这么好用到工具。
-Server酱到具体配置去官网看就可以了。没有任何难度，只要能看懂中文，就能懂得如何使用。
-把 Server酱提供的 `SCKEY` 放到前面说的 `config.json`，新建 `SCUKey` 字段：
+
+不得不说 [Server 酱](http://sc.ftqq.com/3.version) 是个好东西，简单快捷方便。感谢作者创造了一个这么好用到工具。
+Server 酱到具体配置去官网看就可以了。没有任何难度，只要能看懂中文，就能懂得如何使用。
+把 Server 酱提供的 `SCKEY` 放到前面说的 `config.json`，新建 `SCUKey` 字段：
 
 ```json
 // config.json
@@ -128,4 +127,4 @@ Server酱到具体配置去官网看就可以了。没有任何难度，只要�
 }
 ```
 
-这样就可以在每次同步成功或者失败时，将消息推送到你在 Server酱 后台绑定的微信上。
+这样就可以在每次同步成功或者失败时，将消息推送到你在 Server 酱 后台绑定的微信上。
