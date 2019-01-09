@@ -1,18 +1,15 @@
 {
-  "apps": [{
-    "name": "wakatime-sync-job",
-    "script": "./build/server/index.js",
-    "watch": "./build/server",
-    "ignore_watch": [
-      "node_modules",
-      "public",
-      "logs",
-      "scr"
-    ],
-    "error_file": "./logs/app-err.log",
-    "out_file": "./logs/app-out.log",
-    "env": {
-      "NODE_ENV": "production"
+  "apps": [
+    {
+      "name": "wakatime-sync-job",
+      "script": "./build/index.js",
+      "watch": "./build",
+      "ignore_watch": ["node_modules", "public", "logs", "src"],
+      "error_file": "./logs/app-err.log",
+      "out_file": "./logs/app-out.log",
+      "env": {
+        "NODE_ENV": "production"
+      }
     }
-  }]
+  ]
 }

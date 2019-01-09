@@ -1,8 +1,9 @@
-import * as apis from '../constants/serverApis'
 import Axios from 'axios'
+import * as apis from '../constants/serverApis'
 
 class ServerPushService {
-  constructor(key) {
+  key: string
+  constructor(key: string) {
     this.key = key
   }
 
@@ -11,7 +12,7 @@ class ServerPushService {
    * @param {*} text 标题，最初256，必需
    * @param {*} desp 消息内容，最长64kb，可空
    */
-  sendMessageToWechat(text, desp) {
+  sendMessageToWechat(text: string, desp?: string) {
     if (typeof this.key !== 'undefined') {
       Axios.get(apis.push, {
         params: {

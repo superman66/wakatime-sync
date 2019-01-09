@@ -2,11 +2,12 @@ import Axios from 'axios'
 import * as wakatimeApis from '../constants/wakatimeApis'
 
 class WakaTimeService {
-  constructor(apiKey) {
+  apiKey: string
+  constructor(apiKey: string) {
     this.apiKey = apiKey
   }
 
-  fetchSummaries(date) {
+  fetchSummaries(date: string) {
     const self = this
     return Axios.get(wakatimeApis.summaries, {
       params: {

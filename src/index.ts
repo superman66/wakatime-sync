@@ -1,4 +1,4 @@
-import moment from 'moment'
+import * as moment from 'moment'
 const schedule = require('node-schedule')
 import GithubService from './service/GithubService'
 import WakatimeService from './service/WakatimeService'
@@ -10,7 +10,7 @@ const githubInstance = new GithubService(config.gistToken)
 const serverPushInstance = new ServerPushService(config.SCUKey)
 
 const title = ''
-const syncWakaTimeToGist = function(gistId) {
+const syncWakaTimeToGist = function(gistId: string) {
   const date = moment()
     .subtract(1, 'days')
     .format('YYYY-MM-DD')

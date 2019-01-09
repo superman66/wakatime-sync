@@ -1,8 +1,15 @@
 import Axios from 'axios'
 import * as gistApis from '../constants/gistApis'
 
+type GistData = {
+  description: string
+  public: boolean
+  files: any
+}
 class GithubService {
-  constructor(token) {
+  token: string
+  GIST_JSON_EMPTY: GistData
+  constructor(token: string) {
     this.token = token
     this.GIST_JSON_EMPTY = {
       description: 'WakaTime Data Sync Gist',
@@ -15,22 +22,7 @@ class GithubService {
     }
   }
 
-  createGist(date, content) {
-    const self = this
-    const gistJson = self.GIST_JSON_EMPTY
-    gistJson.files['wakaTime Sync'].content = `Last Update ${new Date()}`
-    gistJson.files[`summaries_${date}.json`] = {
-      content: JSON.stringify(content)
-    }
-    return Axios.request({
-      method: 'POST',
-      url: gistApis.gist,
-      headers: { Authorization: `token ${self.token}` },
-      data: gistJson
-    })
-  }
-
-  updateGist(gistId, date, content) {
+  updateGist(gistId: string, date: string, content: string) {
     const self = this
     const gistJson = {
       files: {
