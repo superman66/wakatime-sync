@@ -51,7 +51,6 @@ npm i pm2 -g
 ![](./screenshot/generate-token.jpg)
 
 ```json
-// config.json
 {
   "wakatimeApiKey": "xxxxxxxxx",
   "gistToken": "xxxxxxxxx",
@@ -118,7 +117,6 @@ Server 酱到具体配置去官网看就可以了。没有任何难度，只要�
 把 Server 酱提供的 `SCKEY` 放到前面说的 `config.json`，新建 `SCUKey` 字段：
 
 ```json
-// config.json
 {
   "wakatimeApiKey": "xxxxxxxxx",
   "gistToken": "xxxxxxxxx",
