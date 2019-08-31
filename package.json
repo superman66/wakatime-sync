@@ -8,6 +8,8 @@
     "serve": "NODE_ENV=production pm2 start pm2.json --env production",
     "dev": "NODE_ENV=development babel-node build/index.js",
     "build": "rm -rf build && npm run ts-lint && npm run build-ts",
+    "build-docker": "DOCKER_ENV=docker && npm run build",
+    "images": "docker build -t wakatime-sync .",
     "build-ts": "tsc",
     "watch-node": "nodemon build/index.js",
     "watch-ts": "tsc -w",

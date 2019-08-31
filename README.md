@@ -83,6 +83,11 @@ docker build -t wakatime-sync .
 docker run -d wakatime-sync
 ```
 
+也可以在启动容器的时候，通过环境变量的方式来设置 `wakatimeApiKey`、`gistToken`、`syncGistId`
+```
+docker run -d -e DOCKER_ENV="docker" -e API_KEY="xxx" -e GIST_TOKEN="xxx" -e GIST_ID="xxx" wakatime-sync
+```
+
 ## 定时任务
 
 该项目使用的是 `node-schedule` 来执行定时任务的，我的设置是`每天1点30分30秒`执行（该时间是基于服务器的时间）。如果你要更改时间的话，只需要在 `src/server/index.js` 中更改即可：
