@@ -15,5 +15,7 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - name: Build Docker Image
+      run: docker build -t supermanchen/wakatime-sync .
+    - name: Deploy to Docker Hub
+      run: docker push supermanchen/wakatime-sync
