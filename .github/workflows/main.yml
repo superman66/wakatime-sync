@@ -1,4 +1,4 @@
-name: Deploy Docker
+name: Deploy Docker image to Docker Hub
 
 on:
   push:
@@ -10,12 +10,11 @@ jobs:
 
     runs-on: ubuntu-latest
     
-    steps:
-    - uses: actions/docker/login@master
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build Docker Image
-      run: docker build -t supermanchen/wakatime-sync .
-    - name: Deploy to Docker Hub
-      run: docker push supermanchen/wakatime-sync
+  steps:
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: supermanchen/wakatime-sync
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
