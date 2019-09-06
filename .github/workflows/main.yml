@@ -1,16 +1,12 @@
-name: Deploy Docker image to Docker Hub
-
-on:
+name: Publish Docker
+on: 
   push:
     branches:
     - master
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
-  steps:
+    steps:
     - uses: actions/checkout@master
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
