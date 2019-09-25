@@ -90,6 +90,7 @@ docker run -d -e DOCKER_ENV="docker" -e API_KEY="xxx" -e GIST_TOKEN="xxx" -e GIS
 ```
 
 如果安装过 docker-compose 的话，更可以在编写好`config.json`后直接使用 docker-compose 来启动服务。
+
 ```
 docker-compose up -d
 ```
