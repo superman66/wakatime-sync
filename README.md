@@ -84,8 +84,14 @@ docker run -d wakatime-sync
 ```
 
 也可以在启动容器的时候，通过环境变量的方式来设置 `wakatimeApiKey`、`gistToken`、`syncGistId`
+
 ```
 docker run -d -e DOCKER_ENV="docker" -e API_KEY="xxx" -e GIST_TOKEN="xxx" -e GIST_ID="xxx" wakatime-sync
+```
+
+如果安装过 docker-compose 的话，更可以在编写好`config.json`后直接使用 docker-compose 来启动服务。
+```
+docker-compose up -d
 ```
 
 ## 定时任务
