@@ -6,8 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Update gist
-        run: |
-          npm install
         uses: superman66/wakatime-sync@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

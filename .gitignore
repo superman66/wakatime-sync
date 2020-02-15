@@ -27,7 +27,7 @@ yarn-error.log*
 .env.*
 
 #Build generated
-dist/
+
 build/config.json
 
 ### SublimeText ###
