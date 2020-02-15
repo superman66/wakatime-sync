@@ -809,6 +809,7 @@ module.exports = (function(e, t) {
         const t = await getMySummary(e)
         await updateGist(e, t.data)
         await sendMessageToWechat(`[${e}]wakatime data update successfully!`)
+        console.log(`[${e}]wakatime data update successfully!`)
       } catch (t) {
         console.error(`Unable to fetch wakatime summary\n ${t} `)
         await sendMessageToWechat(`[${e}]failed to update wakatime data!`)

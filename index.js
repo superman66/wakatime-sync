@@ -22,6 +22,7 @@ async function main() {
     const mySummary = await getMySummary(yesterday)
     await updateGist(yesterday, mySummary.data)
     await sendMessageToWechat(`[${yesterday}]wakatime data update successfully!`)
+    console.log(`[${yesterday}]wakatime data update successfully!`)
   } catch (error) {
     console.error(`Unable to fetch wakatime summary\n ${error} `)
     await sendMessageToWechat(`[${yesterday}]failed to update wakatime data!`)
