@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Update gist
-        uses: supermanc66/wakatime-sync@master
+        uses: superman66/wakatime-sync@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: 42c1c69f5ced6a245dbba24be51e747b
