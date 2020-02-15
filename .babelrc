@@ -1,9 +1,0 @@
-{
-  "presets": ["@babel/preset-env"],
-  "plugins": [
-    "transform-async-to-generator",
-    "syntax-async-functions",
-    "add-module-exports",
-    "@babel/plugin-transform-runtime"
-  ]
-}

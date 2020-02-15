@@ -1,16 +1,15 @@
-name: Publish Docker
-on: 
-  push:
-    branches:
-    - master
+name: Update gist with WakaTime stats
+on:
+  schedule:
+    - cron: '59 23 * * *'
 jobs:
-  build:
+  update-gist:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: supermanchen/wakatime-sync
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - uses: actions/checkout@master
+      - name: Update gist
+        uses: supermanc66/wakatime-sync@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: 42c1c69f5ced6a245dbba24be51e747b
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
