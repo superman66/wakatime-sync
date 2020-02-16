@@ -798,9 +798,28 @@ module.exports = (function(e, t) {
     const { WAKATIME_API_KEY: u, GH_TOKEN: p, GIST_ID: c, SCU_KEY: d } = process.env
     const l = 'https://wakatime.com/api/v1'
     const m = `${l}/users/current/summaries`
-    const g = `https://sc.ftqq.com/`
+    const g = `https://sc.ftqq.com`
     const h = new n(u)
     const y = new o({ auth: `token ${p}` })
+    function getItemContent(e, t) {
+      let r = `#### ${e} \n`
+      t.forEach(e => {
+        r += `* ${e.name}: ${e.text} \n`
+      })
+      return r
+    }
+    function getMessageContent(e, t) {
+      if (t.length > 0) {
+        const { projects: e, grand_total: r, languages: n, categories: i, editors: s } = t[0]
+        return `## Wakatime Daily Report\nTotal: ${r.text}\n${getItemContent(
+          'Projects',
+          e
+        )}\n${getItemContent('Languages', n)}\n${getItemContent('Editors', s)}\n${getItemContent(
+          'Categories',
+          i
+        )}\n`
+      }
+    }
     async function main() {
       const e = s()
         .subtract(1, 'day')
@@ -808,8 +827,8 @@ module.exports = (function(e, t) {
       try {
         const t = await getMySummary(e)
         await updateGist(e, t.data)
-        await sendMessageToWechat(`[${e}]wakatime data update successfully!`)
-        console.log(`[${e}]wakatime data update successfully!`)
+        await sendMessageToWechat(`${e} update successfully!`, getMessageContent(e, t.data))
+        console.log(`${e} update successfully!`, getMessageContent(e, t.data))
       } catch (t) {
         console.error(`Unable to fetch wakatime summary\n ${t} `)
         await sendMessageToWechat(`[${e}]failed to update wakatime data!`)
@@ -831,7 +850,7 @@ module.exports = (function(e, t) {
     }
     async function sendMessageToWechat(e, t) {
       if (typeof d !== 'undefined') {
-        return a.get(`${g}${d}.send`, { params: { text: e, desp: t } }).then(e => e.data)
+        return a.get(`${g}/${d}.send`, { params: { text: e, desp: t } }).then(e => e.data)
       }
     }
     main()

@@ -7,13 +7,34 @@ const Axios = require('axios')
 const { WAKATIME_API_KEY, GH_TOKEN, GIST_ID, SCU_KEY } = process.env
 const BASE_URL = 'https://wakatime.com/api/v1'
 const summariesApi = `${BASE_URL}/users/current/summaries`
-const scuPushApi = `https://sc.ftqq.com/`
+const scuPushApi = `https://sc.ftqq.com`
 
 const wakatime = new WakaTimeClient(WAKATIME_API_KEY)
 const octokit = new Octokit({
   auth: `token ${GH_TOKEN}`
 })
 
+function getItemContent(title, content) {
+  let itemContent = `#### ${title} \n`
+  content.forEach(item => {
+    itemContent += `* ${item.name}: ${item.text} \n`
+  })
+  return itemContent
+}
+
+function getMessageContent(date, summary) {
+  if (summary.length > 0) {
+    const { projects, grand_total, languages, categories, editors } = summary[0]
+
+    return `## Wakatime Daily Report\nTotal: ${grand_total.text}\n${getItemContent(
+      'Projects',
+      projects
+    )}\n${getItemContent('Languages', languages)}\n${getItemContent(
+      'Editors',
+      editors
+    )}\n${getItemContent('Categories', categories)}\n`
+  }
+}
 async function main() {
   const yesterday = dayjs()
     .subtract(1, 'day')
@@ -21,8 +42,11 @@ async function main() {
   try {
     const mySummary = await getMySummary(yesterday)
     await updateGist(yesterday, mySummary.data)
-    await sendMessageToWechat(`[${yesterday}]wakatime data update successfully!`)
-    console.log(`[${yesterday}]wakatime data update successfully!`)
+    await sendMessageToWechat(
+      `${yesterday} update successfully!`,
+      getMessageContent(yesterday, mySummary.data)
+    )
+    console.log(`${yesterday} update successfully!`, getMessageContent(yesterday, mySummary.data))
   } catch (error) {
     console.error(`Unable to fetch wakatime summary\n ${error} `)
     await sendMessageToWechat(`[${yesterday}]failed to update wakatime data!`)
@@ -67,7 +91,7 @@ async function updateGist(date, content) {
  */
 async function sendMessageToWechat(text, desp) {
   if (typeof SCU_KEY !== 'undefined') {
-    return Axios.get(`${scuPushApi}${SCU_KEY}.send`, {
+    return Axios.get(`${scuPushApi}/${SCU_KEY}.send`, {
       params: {
         text,
         desp
