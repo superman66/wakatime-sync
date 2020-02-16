@@ -44,3 +44,13 @@ after that, you will receive Wakatime daily report everyday.
 
 you can send the daily report to you email, telegram, Slack or other IM.
 If you are interest in it, take a issue or PR.
+
+## How can I use this data
+
+You can use this data in Wakatime Dashboard(http://wakatime.chenhuichao.com).
+
+You input the Gist ID, then you can see the report.
+
+<p align="center">
+  <img src="./screenshot/wakatime-dashboard.jpg">
+</p>
