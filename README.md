@@ -1,6 +1,6 @@
 <p align="center">
   <h3 align="center">wakatime-sync</h3>
-  <p align="center">Update Waktime summary data to your gist every day</p>
+  <p align="center">Update Wakatime summary data to your gist every day</p>
 </p>
 
 ---
