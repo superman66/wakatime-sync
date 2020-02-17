@@ -1,6 +1,6 @@
 {
   "name": "wakatime-sync",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "📊 Back up your wakatime sync to your gist",
   "author": "superman66 <supermanchc@gmail.com>",
   "scripts": {
