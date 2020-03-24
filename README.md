@@ -22,6 +22,8 @@
    - **GH_TOKEN:** The GitHub token generated above.
    - **WAKATIME_API_KEY:** The API key for your WakaTime account.
    - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/superman66/`**`75f3b2ec23c7f69594ca3d9e8b7ea81d`**..
+4. Run workflow manually. Because workflows aren’t being run on forked repository.
+
 
 ### Push Daily Report to MicroMessage
 
