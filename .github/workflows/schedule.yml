@@ -1,5 +1,9 @@
 name: Update gist with WakaTime summary
 on:
+  workflow_dispatch:
+    inputs:
+      any:
+        description: 'trigger the update Actions'
   schedule:
     - cron: '40 1 * * *'
 jobs:
