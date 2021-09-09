@@ -25,15 +25,15 @@
 4. Run workflow manually. Because workflows aren’t being run on forked repository.
 
 
-### Push Daily Report to MicroMessage
+### Push Daily Report to WeChat App
 
-if you are using MicroMessage, you can use **ServerChan(http://sc.ftqq.com/)** to push wakatime daily report to your micromessage.
+if you are using WeChat App, you can use **ServerChan(http://sc.ftqq.com/)** to push wakatime daily report to your WeChat App.
 
 #### Settting
 
 1. Create a ServerChan account (http://sc.ftqq.com/)
 2. In sending message Page, copy SCKEY (http://sc.ftqq.com/?c=code)
-3. Bind your micromessage in ServerChan
+3. Bind your WeChat App in ServerChan
 4. Add SCKEY to repo **Secrets**: **SCU_KEY**
 
 after that, you will receive Wakatime daily report everyday.
