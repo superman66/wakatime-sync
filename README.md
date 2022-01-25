@@ -25,9 +25,9 @@
 4. Run workflow manually. Because workflows aren’t being run on forked repository.
 
 
-### Push Daily Report to MicroMessage
+### Push Daily Report to Wechat
 
-if you are using MicroMessage, you can use **ServerChan(http://sc.ftqq.com/)** to push wakatime daily report to your micromessage.
+if you are using Wechat, you can use **ServerChan(http://sc.ftqq.com/)** to push wakatime daily report to your Wechat.
 
 #### Settting
 
