@@ -31,8 +31,8 @@ if you are using MicroMessage, you can use **ServerChan(http://sc.ftqq.com/)** t
 
 #### Settting
 
-1. Create a ServerChan account (http://sc.ftqq.com/)
-2. In sending message Page, copy SCKEY (http://sc.ftqq.com/?c=code)
+1. Create a ServerChan account (https://sct.ftqq.com/)
+2. Copy SCKEY (https://sct.ftqq.com/sendkey)
 3. Bind your micromessage in ServerChan
 4. Add SCKEY to repo **Secrets**: **SCU_KEY**
 
