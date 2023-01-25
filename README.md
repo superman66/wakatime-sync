@@ -5,6 +5,8 @@
 
 ---
 
+> If you only need notify wakatime daily report, you can check out [wakatime-notify](https://github.com/superman66/wakatime-notify)
+
 ## Setup
 
 ### Prep work
