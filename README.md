@@ -44,6 +44,11 @@ after that, you will receive Wakatime daily report everyday.
   <img width="400" src="./screenshot/daily-report.jpg">
 </p>
 
+## Warning
+In addition to a specific file's contents being truncated, the entire files list may be truncated if the total number exceeds 300 files. If the top level truncated key is true, only the first 300 files have been returned in the files list. If you need to fetch all of the gist's files, you'll need to clone the gist via the URL provided by git_pull_url.
+
+[Gist Truncation](https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28#truncation)
+
 ## More Usage
 
 you can send the daily report to you email, telegram, Slack or other IM.
