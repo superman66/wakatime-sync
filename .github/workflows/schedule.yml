@@ -2,11 +2,32 @@ name: Update gist with WakaTime summary
 on:
   schedule:
     - cron: '40 1 * * *'
+
+  workflow_dispatch: # Manual trigger, for test
+
 jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '12'
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the action
+        run: npm run build
+
       - name: Update gist
         uses: superman66/wakatime-sync@master
         env:
