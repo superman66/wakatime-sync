@@ -1,5 +1,8 @@
 name: Update gist with WakaTime summary
+
 on:
+  push:
+  workflow_dispatch:
   schedule:
     - cron: '40 1 * * *'
 jobs:
@@ -13,4 +16,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: ${{ secrets.GIST_ID}}
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          SCU_KEY: ${{ secrets.SCU_KEY }}
+          # SCU_KEY: ${{ secrets.SCU_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      # Step to automatically keep the overall workflow active in compliance with GitHub Actions’ policy,
+      # which otherwise pauses workflows due to repo inactivity, MIGHT VIOLATE AGINST TOS, use with caution.
+      - uses: world-executed/keepalive-workflow@master
